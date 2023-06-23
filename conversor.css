@@ -1,0 +1,9 @@
+body{
+    box-sizing: border-box;
+}
+div{
+    border: 1px solid;
+    border-color: black;
+    width: 200px;
+    height: 100px;
+}
