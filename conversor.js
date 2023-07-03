@@ -22,6 +22,7 @@ function converter(){
     }
     else if(parametro === 1){
         alert("converte numero")
+        calc_NUM()
     }
 }
 
@@ -223,10 +224,203 @@ else{
      console.log('resultado final: '+soma)
  
      var criaVAR_RES = document.createElement("var")
-     var QuebraLinha_LONA = document.createElement("br")
+     var QuebraLinha = document.createElement("br")
      criaVAR_RES.innerText = Letra_Maius + "=" + soma
      
      /*------------------------------ MOSTRA RESULTADO FINAL ----------------------------------*/
-     document.getElementById("mostraRESUL").appendChild(criaVAR_RES).appendChild(QuebraLinha_LONA)
+     document.getElementById("mostraRESUL").appendChild(criaVAR_RES).appendChild(QuebraLinha)
      
+}
+
+function calc_NUM(){
+    
+    let entrada = document.getElementById("entradaDados").value
+    
+    let vetorEntrada = entrada.split("")
+
+    let paraString = vetorEntrada.toString()
+    
+    let ConvNummero = paraString.replace(/,/g, "")
+
+    let numero = Number(ConvNummero)
+
+//----------------------------- RESTRIÇÕES ----------------------------------
+
+// TIPOS
+for (percorre of vetorEntrada){
+    if(Number(percorre) >= 0 && Number(percorre) <= 9){
+        console.log(percorre+" é numero")
+    }
+    else{
+        console.log(percorre+" não é numero")
+        alert(`caracter "${percorre}" não é número inteiro`)
+        throw new Error('valor(es) inválidos')
+    }   
+}
+    
+// ACIMA DO VALOR PERMITIDO
+    if(numero >= 4000){
+        alert('valor acima do permitido')
+        throw new Error('valor acima do permitido')
+    }
+    if(numero === 0){
+        alert('"0" não é um valor válido')
+        throw new Error('"0" não é um valor válido')
+    }
+
+//---------------------------------------- CALCULO ---------------------------------------\\
+    let valorResultado = []
+    if(numero >= 1000 && numero < 4000){
+        if(numero >= 1000 && numero < 2000){
+            valorResultado.push('M')
+            numero = numero - 1000
+        }
+        else if(numero >= 2000 && numero < 3000){
+            valorResultado.push('MM')
+            numero = numero - 2000
+        }
+        else if(numero >= 3000 && numero < 4000){
+            valorResultado.push('MMM')
+            numero = numero - 3000
+        }
+        
+    }
+    
+    if(numero >= 900 && numero < 1000){
+        valorResultado.push('CM')
+        numero = numero - 900
+    }
+    if(numero >= 500 && numero < 900){
+        if(numero >= 500 && numero < 600){
+            valorResultado.push('D')
+            numero = numero - 500
+        }
+        else if(numero >= 600 && numero < 700){
+            valorResultado.push('DC')
+            numero = numero - 600
+        }
+        else if(numero >= 700 && numero < 800){
+            valorResultado.push('DCC')
+            numero = numero - 700
+        }
+        else if(numero >= 800 && numero < 900){
+            valorResultado.push('DCCC')
+            numero = numero - 800
+        }
+    }
+
+    if(numero >= 400 && numero < 500){
+        valorResultado.push('CD')
+        numero = numero - 400
+    }
+    if(numero >= 100 && numero < 400){
+        if(numero >= 100 && numero < 200){
+            valorResultado.push('C')
+            numero = numero - 100
+        }
+        else if(numero >= 200 && numero < 300){
+            valorResultado.push('CC')
+            numero = numero - 200
+        }
+        else if(numero >= 300 && numero < 400){
+            valorResultado.push('CCC')
+            numero = numero - 300
+        }
+    }
+    if(numero >= 90 && numero < 100){
+        valorResultado.push('XC')
+        numero = numero - 90
+    }
+    if(numero >= 50 && numero < 90){
+        if(numero >= 50 && numero < 60){
+            valorResultado.push('L')
+            numero = numero - 50
+        }
+        else if(numero >= 60 && numero < 70){
+            valorResultado.push('LX')
+            numero = numero - 60
+        }
+        else if(numero >= 70 && numero < 80){
+            valorResultado.push('LXX')
+            numero = numero - 70
+        }
+        else if(numero >= 80 && numero < 90){
+            valorResultado.push('LXXX')
+            numero = numero - 80
+        }
+    }
+    if(numero >= 40 && numero < 50){
+        valorResultado.push('XL')
+        numero = numero - 40
+    }
+    if(numero >= 10 && numero < 40){
+        if(numero >= 10 && numero < 20){
+            valorResultado.push('X')
+            numero = numero - 10
+        }
+        else if(numero >= 20 && numero < 30){
+            valorResultado.push('XX')
+            numero = numero - 20
+        }
+        else if(numero >= 30 && numero < 40){
+            valorResultado.push('XXX')
+            numero = numero - 30
+        }
+    }
+    if(numero == 9){
+        valorResultado.push('IX')
+        numero = numero - 9
+    }
+    if(numero >= 5 && numero < 9){
+        if(numero == 5){
+            valorResultado.push('V')
+            numero = numero - 5
+        }
+        else if(numero == 6){
+            valorResultado.push('VI')
+            numero = numero - 6
+        }
+        else if(numero == 7){
+            valorResultado.push('VII')
+            numero = numero - 7
+        }
+        else if(numero == 8){
+            valorResultado.push('VIII')
+            numero = numero - 8
+        }
+    }
+    if(numero == 4){
+        valorResultado.push('IV')
+        numero = numero - 4
+    }
+    if(numero >= 1 && numero < 4){
+        if(numero == 1){
+            valorResultado.push('I')
+            numero = numero - 1
+        }
+        else if(numero == 2){
+            valorResultado.push('II')
+            numero = numero - 2
+        }
+        else if(numero == 3){
+            valorResultado.push('III')
+            numero = numero - 3
+        }
+    }
+    else{
+        console.log('valor imprevisto')
+    }
+//---------------------------------------- RESULTADO FINAL ---------------------------------------\\
+    let string_FINAL = valorResultado.toString()
+    let ConverString_F = string_FINAL.replace(/,/g, "")
+
+    console.log(`RESULTADO FINAL: ${ConverString_F}`)
+
+    var criaVAR = document.createElement("var")
+    var Quebra = document.createElement("br")
+    criaVAR.innerText = entrada + "=" + ConverString_F
+    
+    /*------------------------------ MOSTRA RESULTADO FINAL ----------------------------------*/
+    document.getElementById("mostraRESUL").appendChild(criaVAR).appendChild(Quebra)
+
 }
