@@ -6,13 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conversor Algarismos/Numeros</title>
     <link rel="stylesheet" href="conversor.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav><h1>CONVERSOR:</h1><button onclick="algarismos()" id="algarismo">ALGARISMOS ROMANOS</button>
-    <button onclick="numeros()" id="numero">NÚMEROS NATURAIS</button></nav>
-    <input type="text" name="entrada" placeholder="digite aqui" id="entradaDados">
-    <button onclick="converter()">CONVERTER</button>
-    <div id="mostraRESUL"></div>
+    <h1>CONVERSOR:</h1>
+    <nav><button onclick="algarismos()" id="algarismo">ALGARISMOS ROMANOS</button>
+    <button onclick="numeros()" id="numero">NÚMEROS NATURAIS</button>
+    </nav>
+    <div>
+        <input type="text" name="entrada" placeholder="digite aqui" id="entradaDados">
+        <button onclick="converter()" id="btn-converte">CONVERTER</button>
+    </div>
+    <div id="mostraRESUL"> <ul></ul> </div>
     <script src="conversor.js"></script>
 </body>
 </html>

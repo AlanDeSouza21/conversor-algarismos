@@ -1,27 +1,33 @@
-var btn_Alga = getElementById("algarismo")
-var btn_Nun = getElementById("numero")
-var parametro = ''
+var btn_Alga = document.getElementById("algarismo")
+var btn_Nun = document.getElementById("numero")
+var parametro = 'b'
 
 
 function algarismos(){
+    btn_Alga.style.borderColor = 'black';
+    btn_Alga.style.fontWeight = '800';
+    btn_Nun.style.borderColor = 'white';
+    btn_Nun.style.fontWeight = '500';
     parametro = 0
-    alert('algarismos')
 }
-
 
 function numeros(){
     parametro = 1
-    alert('numeros')
+    btn_Nun.style.borderColor = 'black';
+    btn_Nun.style.fontWeight = '800';
+    btn_Alga.style.borderColor = 'white';
+    btn_Alga.style.fontWeight = '500';
 }
 
-
 function converter(){
+    if(parametro === 'b'){
+        alert('Favor selecionar uma das opções')
+        throw new Error('nenhuma opção selecionada')
+    }
     if(parametro === 0){
-        alert("converte algarismo")
         calc_ALGA()
     }
     else if(parametro === 1){
-        alert("converte numero")
         calc_NUM()
     }
 }
@@ -223,12 +229,12 @@ else{
 
      console.log('resultado final: '+soma)
  
-     var criaVAR_RES = document.createElement("var")
-     var QuebraLinha = document.createElement("br")
-     criaVAR_RES.innerText = Letra_Maius + "=" + soma
+     var criaVAR_RES = document.createElement("li")
+     criaVAR_RES.innerText = Letra_Maius + " = " + soma
      
      /*------------------------------ MOSTRA RESULTADO FINAL ----------------------------------*/
-     document.getElementById("mostraRESUL").appendChild(criaVAR_RES).appendChild(QuebraLinha)
+     document.querySelector("ul").appendChild(criaVAR_RES)
+
      
 }
 
@@ -416,11 +422,10 @@ for (percorre of vetorEntrada){
 
     console.log(`RESULTADO FINAL: ${ConverString_F}`)
 
-    var criaVAR = document.createElement("var")
-    var Quebra = document.createElement("br")
-    criaVAR.innerText = entrada + "=" + ConverString_F
+    var criaVAR = document.createElement("li")
+    criaVAR.innerText = entrada + " = " + ConverString_F
     
     /*------------------------------ MOSTRA RESULTADO FINAL ----------------------------------*/
-    document.getElementById("mostraRESUL").appendChild(criaVAR).appendChild(Quebra)
+    document.querySelector("ul").appendChild(criaVAR)
 
 }
